@@ -1,28 +1,15 @@
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import MainNavigator from './src/navigation/Stack/MainNavigation';
 
 function App() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.mainContainer} edges={['top']}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.contentContainer}>
-          <Text>App</Text>
-        </View>
-      </SafeAreaView>
+      <NavigationContainer>
+        <MainNavigator />
+      </NavigationContainer>
     </SafeAreaProvider>
-  )
+  );
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: '#1E1E1E',
-  },
-  contentContainer: {
-    flex: 1,
-    backgroundColor: '#FFFFFF'
-  }
-})
 
 export default App;
