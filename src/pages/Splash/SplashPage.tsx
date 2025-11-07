@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Circle from '../../components/shapes/circle/Circle';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackNavigatorList } from '../../navigation/Stack/MainNavigation';
+import { useEffect } from 'react';
 
 type SplashPageNavigationType = StackNavigationProp<MainStackNavigatorList, 'SplashPage'>
 
@@ -18,6 +19,11 @@ type SpalshPageNavigationProp = {
 
 function SplashPage(props: Readonly<SpalshPageNavigationProp>) {
   const {navigation} = props;
+  useEffect(() => {
+    setTimeout(() => {
+      onSplashLoadingPageHandler();
+    }, 1000);
+  })
   const onSplashLoadingPageHandler = () => {
     navigation.navigate('SplashLoadingPage');
   };
