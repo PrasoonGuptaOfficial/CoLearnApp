@@ -7,34 +7,29 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Circle from '../../components/shapes/circle/Circle';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { MainStackNavigatorList } from '../../navigation/Stack/MainNavigation';
+import MyButton from '../../components/reusable/cta/MyButton';
 
-type SplashPageNavigationType = StackNavigationProp<MainStackNavigatorList, 'SplashPage'>
-
-type SpalshPageNavigationProp = {
-  navigation: SplashPageNavigationType;
-}
-
-function SplashPage(props: Readonly<SpalshPageNavigationProp>) {
-  const {navigation} = props;
-  const onSplashLoadingPageHandler = () => {
-    navigation.navigate('SplashLoadingPage');
-  };
+function SplashLoadingPage() {
   return (
     <SafeAreaView style={styles.mainContainer} edges={['top']}>
       <StatusBar barStyle="light-content" />
       <ImageBackground
-        source={require('../../assets/images/splash/SplashScreenInitial.png')}
+        source={require('../../assets/images/splash/SplashScreenLoadingInitial.png')}
         style={styles.contentContainer}
       >
         <Text style={styles.mainHeaderText}>
-          Match Making App for Study Buddies
+          Peer-to-peer learning Experience.
         </Text>
         <View style={styles.paginationView}>
-          <Circle circleColor="#FFC700" circleWidth={8} circleHeight={8} onCirclePress={onSplashLoadingPageHandler} />
           <Circle circleColor="#D9D9D9" circleWidth={8} circleHeight={8} />
+          <Circle circleColor="#FFC700" circleWidth={8} circleHeight={8} />
         </View>
+        <MyButton
+          myButtonStyle={[styles.paginationView, styles.ctaView]}
+          myButtonTextStyle={styles.ctaText}
+          myButtonText="Get Started"
+          myButtonPress={() => {}}
+        />
       </ImageBackground>
     </SafeAreaView>
   );
@@ -65,6 +60,26 @@ const styles = StyleSheet.create({
     bottom: 150,
     flexDirection: 'row',
   },
+  ctaView: {
+    width: 320,
+    height: 48,
+    borderWidth: 1,
+    borderColor: '#FFC700',
+    backgroundColor: '#FFC700',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 6,
+    padding: 10,
+    bottom: 40,
+  },
+  ctaText: {
+    textAlign: 'center',
+    fontFamily: 'NotoSans-Medium',
+    fontWeight: '400',
+    fontStyle: 'normal',
+    fontSize: 18,
+    color: '#282828',
+  },
 });
 
-export default SplashPage;
+export default SplashLoadingPage;
