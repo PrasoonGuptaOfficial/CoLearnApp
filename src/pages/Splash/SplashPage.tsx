@@ -11,19 +11,25 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackNavigatorList } from '../../navigation/Stack/MainNavigation';
 import { useEffect } from 'react';
 
-type SplashPageNavigationType = StackNavigationProp<MainStackNavigatorList, 'SplashPage'>
+type SplashPageNavigationType = StackNavigationProp<
+  MainStackNavigatorList,
+  'SplashPage'
+>;
 
 type SpalshPageNavigationProp = {
   navigation: SplashPageNavigationType;
-}
+};
 
 function SplashPage(props: Readonly<SpalshPageNavigationProp>) {
-  const {navigation} = props;
+  const { navigation } = props;
   useEffect(() => {
-    setTimeout(() => {
+    const splashNavigationRef = setTimeout(() => {
       onSplashLoadingPageHandler();
     }, 1000);
-  })
+    return () => {
+      clearTimeout(splashNavigationRef);
+    };
+  });
   const onSplashLoadingPageHandler = () => {
     navigation.navigate('SplashLoadingPage');
   };
@@ -38,7 +44,12 @@ function SplashPage(props: Readonly<SpalshPageNavigationProp>) {
           Match Making App for Study Buddies
         </Text>
         <View style={styles.paginationView}>
-          <Circle circleColor="#FFC700" circleWidth={8} circleHeight={8} onCirclePress={onSplashLoadingPageHandler} />
+          <Circle
+            circleColor="#FFC700"
+            circleWidth={8}
+            circleHeight={8}
+            onCirclePress={onSplashLoadingPageHandler}
+          />
           <Circle circleColor="#D9D9D9" circleWidth={8} circleHeight={8} />
         </View>
       </ImageBackground>
