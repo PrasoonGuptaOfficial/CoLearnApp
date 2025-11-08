@@ -8,8 +8,23 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Circle from '../../components/shapes/circle/Circle';
 import MyButton from '../../components/reusable/cta/MyButton';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainStackNavigatorList } from '../../navigation/Stack/MainNavigation';
 
-function SplashLoadingPage() {
+type SplashLoadingPageNavigationType = StackNavigationProp<
+  MainStackNavigatorList,
+  'SplashLoadingPage'
+>;
+
+type SplashLoadingPageNavigationProp = {
+  navigation: SplashLoadingPageNavigationType;
+};
+
+function SplashLoadingPage(props: Readonly<SplashLoadingPageNavigationProp>) {
+  const { navigation } = props;
+  const onGetStartedCTAHandler = () => {
+    navigation.navigate('RegisterLoginPage');
+  };
   return (
     <SafeAreaView style={styles.mainContainer} edges={['top']}>
       <StatusBar barStyle="light-content" />
@@ -28,7 +43,7 @@ function SplashLoadingPage() {
           myButtonStyle={[styles.paginationView, styles.ctaView]}
           myButtonTextStyle={styles.ctaText}
           myButtonText="Get Started"
-          myButtonPress={() => {}}
+          myButtonPress={onGetStartedCTAHandler}
         />
       </ImageBackground>
     </SafeAreaView>
