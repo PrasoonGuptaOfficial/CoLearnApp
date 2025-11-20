@@ -1,4 +1,4 @@
-import { Dimensions, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   ScrollRowDataFirst,
@@ -6,6 +6,7 @@ import {
 } from '../../utils/constants/RegisterLoginCard/RegisterLoginCardData';
 import MyCarouselCard from '../../components/reusable/carouselCard/MyCarouselCard';
 import AutoScrollableCards from '../../components/custom/autoScrollableCards/AutoScrollableCards';
+import RegisterLoginComponent from '../../components/pagesComponents/RegisterLoginComponent/RegisterLoginComponent';
 
 type LoginScrollableRenderItemType = {
   id: number;
@@ -19,8 +20,6 @@ const LoginScrollableRenderItemOne = ({
 }) => {
   return <MyCarouselCard carouselCardImage={item?.scrollableImage} />;
 };
-
-const { width, height } = Dimensions.get('window');
 
 function RegisterLogin() {
   return (
@@ -38,9 +37,7 @@ function RegisterLogin() {
           scrollableTimeInterval={500}
         />
       </View>
-      <View style={styles.accountView}>
-        <Text style={{ color: 'white' }}>Check</Text>
-      </View>
+      <RegisterLoginComponent />
     </SafeAreaView>
   );
 }
@@ -54,15 +51,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000000F2',
     opacity: 0.2,
-  },
-  accountView: {
-    flex: 1,
-    bottom: 100,
-    width: width * 0.89,
-    height: height * 0.42,
-    borderWidth: 1,
-    borderColor: 'red',
-    alignSelf: 'center',
   },
 });
 

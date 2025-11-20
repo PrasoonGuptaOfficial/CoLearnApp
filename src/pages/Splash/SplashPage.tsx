@@ -46,11 +46,17 @@ function SplashPage(props: Readonly<SpalshPageNavigationProp>) {
         <View style={styles.paginationView}>
           <Circle
             circleColor="#FFC700"
+            circleBackgroundColor="#FFC700"
             circleWidth={8}
             circleHeight={8}
             onCirclePress={onSplashLoadingPageHandler}
           />
-          <Circle circleColor="#D9D9D9" circleWidth={8} circleHeight={8} />
+          <Circle
+            circleColor="#D9D9D9"
+            circleBackgroundColor="#D9D9D9"
+            circleWidth={8}
+            circleHeight={8}
+          />
         </View>
       </ImageBackground>
     </SafeAreaView>
